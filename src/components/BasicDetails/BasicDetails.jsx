@@ -3,6 +3,11 @@ import styles from "./BasicDetails.module.css";
 import Input from "./Input";
 
 const BasicDetails = ({ basicDetails, setBasicDetails }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setBasicDetails({ ...basicDetails, [name]: value });
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Basic Details</h1>
@@ -12,27 +17,21 @@ const BasicDetails = ({ basicDetails, setBasicDetails }) => {
           type="text"
           id="name"
           value={basicDetails.name}
-          onChange={(e) =>
-            setBasicDetails({ ...basicDetails, name: e.target.value })
-          }
+          onChange={handleChange}
         />
         <Input
           label="Email"
           type="email"
           id="email"
           value={basicDetails.email}
-          onChange={(e) =>
-            setBasicDetails({ ...basicDetails, email: e.target.value })
-          }
+          onChange={handleChange}
         />
         <Input
           label="Phone"
           type="tel"
           id="phone"
           value={basicDetails.phone}
-          onChange={(e) =>
-            setBasicDetails({ ...basicDetails, phone: e.target.value })
-          }
+          onChange={handleChange}
         />
       </div>
     </div>
